@@ -13,14 +13,7 @@
 - [Technologies](#technologies)
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Cron Jobs](#cron-jobs)
-- [Configuration](#configuration)
-- [Project Structure](#project-structure)
-- [Troubleshooting](#troubleshooting)
-- [Contact](#contact)
+    - [How to use](#how-to-use)
 
 ---
 
