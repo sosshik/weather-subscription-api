@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"github.com/sosshik/weather-subscription-api/internal/config"
 	"github.com/sosshik/weather-subscription-api/internal/emailer"
 )
 
@@ -14,9 +15,10 @@ func NewEmailService(sender *emailer.EmailSender) *EmailService {
 }
 
 func (s *EmailService) SendConfirmationEmail(to, token string) error {
+	cfg := config.GetConfig()
 	return s.Emailer.Send(
 		[]string{to},
 		"Confirm your subscription",
-		fmt.Sprintf("Click here to confirm: http://localhost:8090/confirm/%s", token),
+		fmt.Sprintf("Click here to confirm: %s/confirm/%s", cfg.ServiceDomain, token),
 	)
 }

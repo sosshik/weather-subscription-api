@@ -93,7 +93,7 @@ func main() {
 		}
 	}
 
-	c.AddFunc("28 * * * *", func() {
+	c.AddFunc("* * * * *", func() {
 		subs, subsErr := repos.GetAllConfirmedSubscriptionsByFrequency("hourly")
 		if subsErr != nil {
 			log.Error(err)

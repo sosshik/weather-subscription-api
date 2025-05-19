@@ -9,6 +9,7 @@ import (
 type Config struct {
 	ConnectionString string `env:"CONNECTION_STRING"`
 	WeatherApiKey    string `env:"WEATHER_API_KEY"`
+	ServiceDomain    string `env:"SERVICE_DOMAIN"`
 	SenderConfig
 }
 
