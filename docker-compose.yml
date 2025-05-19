@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    env_file: "compose.env"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: weather-app
+    depends_on:
+      - db
+    ports:
+      - "8090:8090"
+    env_file: "compose.env"
+    command: [ "./weather-subscription-api" ]
+
+volumes:
+  db_data:
