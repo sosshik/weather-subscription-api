@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/sosshik/weather-subscription-api/internal/repository"
 	"github.com/sosshik/weather-subscription-api/internal/weather"
+	"net/mail"
 )
 
 type SubscribeRequestDTO struct {
@@ -25,6 +26,9 @@ func (d *SubscribeRequestDTO) Validate() error {
 	if d.Email == "" {
 		return errors.New("email is required")
 	}
+	if !isEmailValid(d.Email) {
+		return errors.New("invalid email")
+	}
 	if d.City == "" {
 		return errors.New("city is required")
 	}
@@ -37,6 +41,11 @@ func (d *SubscribeRequestDTO) Validate() error {
 	}
 
 	return nil
+}
+
+func isEmailValid(email string) bool {
+	_, err := mail.ParseAddress(email)
+	return err == nil
 }
 
 type WeatherDTO struct {
