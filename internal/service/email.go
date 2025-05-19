@@ -27,5 +27,6 @@ func (s *EmailService) SendConfirmationEmail(to, token string) error {
 		[]string{to},
 		"Confirm your subscription",
 		body,
+		true,
 	)
 }

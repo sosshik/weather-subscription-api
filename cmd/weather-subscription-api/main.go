@@ -88,6 +88,7 @@ func main() {
 				emails,
 				fmt.Sprintf("Weather update for %s", city),
 				body,
+				false,
 			)
 			if sendErr != nil {
 				log.Errorf("Unable to send updates email: %v", sendErr)

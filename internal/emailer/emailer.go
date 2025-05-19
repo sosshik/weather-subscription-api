@@ -22,13 +22,23 @@ func NewEmailSender(from, password, host string, port int) *EmailSender {
 	}
 }
 
-func (e *EmailSender) Send(to []string, subject, body string) error {
+func (e *EmailSender) Send(to []string, subject, body string, isHTML bool) error {
 	auth := smtp.PlainAuth("", e.From, e.Password, e.Host)
-
-	// Join recipients with commas for the "To:" header
 	toHeader := strings.Join(to, ", ")
 
-	msg := []byte(fmt.Sprintf("To: %s\r\nSubject: %s\r\n\r\n%s", toHeader, subject, body))
+	contentType := "text/plain; charset=\"UTF-8\""
+	if isHTML {
+		contentType = "text/html; charset=\"UTF-8\""
+	}
+
+	msg := []byte(fmt.Sprintf(
+		"To: %s\r\n"+
+			"Subject: %s\r\n"+
+			"MIME-Version: 1.0\r\n"+
+			"Content-Type: %s\r\n\r\n"+
+			"%s",
+		toHeader, subject, contentType, body,
+	))
 
 	addr := fmt.Sprintf("%s:%d", e.Host, e.Port)
 
