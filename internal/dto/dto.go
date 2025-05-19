@@ -8,9 +8,9 @@ import (
 )
 
 type SubscribeRequestDTO struct {
-	Email     string `json:"email"`
-	City      string `json:"city"`
-	Frequency string `json:"frequency"`
+	Email     string `form:"email" json:"email"`
+	City      string `form:"city" json:"city"`
+	Frequency string `form:"frequency" json:"frequency"`
 }
 
 func (d *SubscribeRequestDTO) ToSubscriptionModel() repository.Subscription {
