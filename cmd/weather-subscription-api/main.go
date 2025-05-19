@@ -24,6 +24,8 @@ import (
 // @title           Weather Subscription API
 // @version         1.0
 // @description     API service for subscribing, confirming, and unsubscribing weather notifications.
+// @description     Local Dev Host - localhost:8090
+// @description     Production - weather-subscription-api-production-9648.up.railway.app
 // @contact.email   support@example.com
 // @host      localhost:8090
 // @BasePath  /

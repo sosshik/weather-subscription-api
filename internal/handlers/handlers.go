@@ -3,7 +3,9 @@ package handlers
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	_ "github.com/sosshik/weather-subscription-api/docs"
 	"github.com/sosshik/weather-subscription-api/internal/service"
+	echoSwagger "github.com/swaggo/echo-swagger"
 	"net/http"
 )
 
@@ -22,6 +24,8 @@ func (h *Handler) InitRoutes() *echo.Echo {
 	e.GET("/health", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Service is healthy:)")
 	})
+
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	// subscriptions
 	{
