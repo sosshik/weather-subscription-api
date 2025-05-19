@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/sosshik/weather-subscription-api/internal/service"
 	"net/http"
 )
@@ -16,6 +17,7 @@ func NewHandler(services *service.Service) *Handler {
 
 func (h *Handler) InitRoutes() *echo.Echo {
 	e := echo.New()
+	e.Use(middleware.CORS())
 
 	e.GET("/health", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Service is healthy:)")
